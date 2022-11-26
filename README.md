@@ -27,3 +27,5 @@ Action types
 ‘search_repository_error’
 
 Will have a single entry point for components to access Redux (reducers, action creators, middle-wares will be imported into the index.ts file, then export it from there) - from the index.ts file. This is best practices in TS rather than having components reaching directly into Redux files
+
+One reducer (repositories), three pieces of state produced by this reducer (data, loading, error) - in state>reducer>respositoriesReducer.ts
