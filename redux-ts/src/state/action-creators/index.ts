@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { ActionType } from '../action-types';
 import { Action } from '../actions';
+import { Dispatch } from 'redux';
 
 // using thunk to create an asynchronous action creator
 // dispatch = how we manually dispatch actions directly into the redux store and get it processed by a reducer
 export const searchRepositories = (term: string) => {
-  return async (dispatch: any) => {
+  // dispatch must return from the Action type we've defined (hover over Action to sees)
+  return async (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.SEARCH_REPOSITORIES,
     });
