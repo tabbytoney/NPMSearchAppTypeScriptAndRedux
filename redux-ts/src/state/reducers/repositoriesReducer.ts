@@ -1,44 +1,49 @@
 // example of how to setup a reducer and add type guards
 
+import { ActionType } from '../action-types';
+import { Action } from '../actions';
+
 interface RepositoriesState {
   loading: boolean;
   error: string | null;
   data: string[];
 }
 
-// Will have an interface for each kind of action in the reducer
-// 1. All actions that are SearchRepositories will always be this kind of object
-interface SearchRepositoriesAction {
-  type: ActionType.SEARCH_REPOSITORIES;
-}
+// This was initially in the same file, moved it to state>actions>index.ts
+// // Will have an interface for each kind of action in the reducer
+// // 1. All actions that are SearchRepositories will always be this kind of object
+// interface SearchRepositoriesAction {
+//   type: ActionType.SEARCH_REPOSITORIES;
+// }
 
-// 2. SearchRepositoriesSuccess action will look like this object
+// // 2. SearchRepositoriesSuccess action will look like this object
 
-interface SearchRepositoriesSuccessAction {
-  type: ActionType.SEARCH_REPOSITORIES_SUCCESS;
-  payload: string[];
-}
+// interface SearchRepositoriesSuccessAction {
+//   type: ActionType.SEARCH_REPOSITORIES_SUCCESS;
+//   payload: string[];
+// }
 
-// 3. SearchRepositoriesError action will look like this object
+// // 3. SearchRepositoriesError action will look like this object
 
-interface SearchRepositoriesErrorAction {
-  type: ActionType.SEARCH_REPOSITORIES_ERROR;
-  payload: string;
-}
+// interface SearchRepositoriesErrorAction {
+//   type: ActionType.SEARCH_REPOSITORIES_ERROR;
+//   payload: string;
+// }
 
-// This makes it so we dont have to use this long union type in the reducer = ( action: ___ )
-type Action =
-  | SearchRepositoriesAction
-  | SearchRepositoriesSuccessAction
-  | SearchRepositoriesErrorAction;
+// // This makes it so we dont have to use this long union type in the reducer = ( action: ___ )
+// type Action =
+//   | SearchRepositoriesAction
+//   | SearchRepositoriesSuccessAction
+//   | SearchRepositoriesErrorAction;
 
+// The below was cut and added to state>action-types>index.ts
 // Adding this enum so we dont have to repeat the 'search_repositories_success' strings a million times
 // To access something inside the enum: ActionType.SEARCH_REPOSITORIES
-enum ActionType {
-  SEARCH_REPOSITORIES = 'search_repositories',
-  SEARCH_REPOSITORIES_SUCCESS = 'search_repositories_success',
-  SEARCH_REPOSITORIES_ERROR = 'search_repositories_error',
-}
+// enum ActionType {
+//   SEARCH_REPOSITORIES = 'search_repositories',
+//   SEARCH_REPOSITORIES_SUCCESS = 'search_repositories_success',
+//   SEARCH_REPOSITORIES_ERROR = 'search_repositories_error',
+// }
 
 // to access the enums
 // ActionType.SEARCH_REPOSITORIES
