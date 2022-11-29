@@ -9,6 +9,12 @@ interface RepositoriesState {
   data: string[];
 }
 
+const initialState = {
+  loading: false,
+  error: null,
+  data: []
+};
+
 // This was initially in the same file, moved it to state>actions>index.ts
 // // Will have an interface for each kind of action in the reducer
 // // 1. All actions that are SearchRepositories will always be this kind of object
@@ -50,7 +56,7 @@ interface RepositoriesState {
 
 // : RepositoriesState sets RepositoriesState as the return type - everything returned must match what's in that interface
 const reducer = (
-  state: RepositoriesState,
+  state: RepositoriesState = initialState,
   action: Action
   // We defined action by the unions below before we had type Action
   // | SearchRepositoriesAction
