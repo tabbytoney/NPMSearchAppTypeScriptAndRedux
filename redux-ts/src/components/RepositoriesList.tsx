@@ -6,12 +6,8 @@ import { useTypedSelector } from '../hooks/useTypedSelector';
 
 const RepositoriesList: React.FC = () => {
   const [term, setTerm] = useState('');
-  // Version 1
-  // const dispatch = useDispatch();
-  const { searchRepositories } = useActions();
-  // ^ line is the same as dispatch(actionCreators.searchRepositories(term) as any)
 
-  // we only want some parts of the state - state.repositories
+  const { searchRepositories } = useActions();
   const { data, error, loading } = useTypedSelector(
     (state) => state.repositories
   );
@@ -20,10 +16,6 @@ const RepositoriesList: React.FC = () => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     // to stop browser from refreshing
     event.preventDefault();
-
-    // Version 1, the long version to dispatch a single action
-    // Instead we created useActions hook to dispatch actions
-    //  dispatch(actionCreators.searchRepositories(term) as any)
     searchRepositories(term);
   };
 
